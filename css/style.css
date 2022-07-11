@@ -1,0 +1,16 @@
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  image-rendering: pixelated;
+}
+body{
+  background-color: black;
+}
+.twrp {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -300px 0 0 -300px;
+}
