@@ -7,10 +7,10 @@ body{
   background-color: black;
 }
 .twrp {
-  width: 600px;
-  height: 600px;
+  width: 1280px;
+  height: 720px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -300px 0 0 -300px;
+  margin: -640px 0 0 -360px;
 }
