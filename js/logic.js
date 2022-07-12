@@ -59,8 +59,8 @@ function scrool(e) {
   touches[0].endX = e.changedTouches[0].screenX;
   touches[0].endY = e.changedTouches[0].screenY;
 
-  mMap.y += (touches[0].endX - touches[0].startX);
-  mMap.x += (touches[0].endY - touches[0].startY);
+  mMap.x += (touches[0].endX - touches[0].startX);
+  mMap.y += (touches[0].endY - touches[0].startY);
 
   touches[0].startX = e.changedTouches[0].screenX;
   touches[0].startY = e.changedTouches[0].screenY;
