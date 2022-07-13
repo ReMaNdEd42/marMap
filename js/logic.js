@@ -24,23 +24,23 @@ document.addEventListener("keyup", (e) => checkKey(e.code, false));
 
 canvas.addEventListener("touchstart", function (e) {
   console.log(e);
-  touches[0].startX = e.touches[0].screenX;
-  touches[0].startY = e.touches[0].screenY;
+  touches[0].startX = e.touches[0].clientX;
+  touches[0].startY = e.touches[0].clientY;
 
   touches[0].start = e.timeStamp;
 
-  touches[0].endX = e.touches[0].screenX;
-  touches[0].endY = e.touches[0].screenY;
+  touches[0].endX = e.touches[0].clientX;
+  touches[0].endY = e.touches[0].clientY;
   
   scroolInertia.isTouchEnd = false;
   if(e.touches>1){
-    touches[1].startX = e.touches[1].screenX;
-    touches[1].startY = e.touches[1].screenY;
+    touches[1].startX = e.touches[1].clientX;
+    touches[1].startY = e.touches[1].clientY;
     
     touches[1].start = e.timeStamp;
     
-    touches[1].endX = e.touches[1].screenX;
-    touches[1].endY = e.touches[1].screenY;
+    touches[1].endX = e.touches[1].clientX;
+    touches[1].endY = e.touches[1].clientY;
   }
   
 });
@@ -66,8 +66,8 @@ mMap.sprite.onload = function () {
 
 function scrool(e) {
   touches[0].stop = e.timeStamp;
-  touches[0].endX = e.touches[0].screenX;
-  touches[0].endY = e.touches[0].screenY;
+  touches[0].endX = e.touches[0].clientX;
+  touches[0].endY = e.touches[0].clientY;
 
   scroolInertia.speedX = (touches[0].endX - touches[0].startX) / (touches[0].stop - touches[0].start) * 50;
   scroolInertia.speedY = (touches[0].endY - touches[0].startY) / (touches[0].stop - touches[0].start) * 50;
@@ -75,31 +75,31 @@ function scrool(e) {
   mMap.x += (touches[0].endX - touches[0].startX);
   mMap.y += (touches[0].endY - touches[0].startY);
 
-  touches[0].startX = e.touches[0].screenX;
-  touches[0].startY = e.touches[0].screenY;
+  touches[0].startX = e.touches[0].clientX;
+  touches[0].startY = e.touches[0].clientY;
   touches[0].start = e.timeStamp;
 }
 
 function scale(e) {
   touches[0].stop = e.timeStamp;
-  touches[0].endX = e.touches[0].screenX;
-  touches[0].endY = e.touches[0].screenY;
+  touches[0].endX = e.touches[0].clientX;
+  touches[0].endY = e.touches[0].clientY;
 
   touches[1].stop = e.timeStamp;
-  touches[1].endX = e.touches[1].screenX;
-  touches[1].endY = e.touches[1].screenY;
+  touches[1].endX = e.touches[1].clientX;
+  touches[1].endY = e.touches[1].clientY;
 
   let s = Math.sqrt((touches[0].endX - touches[1].endX) ** 2 + (touches[0].endY - touches[1].endY) ** 2) /
   Math.sqrt((touches[0].startX - touches[1].startX) ** 2 + (touches[0].startY - touches[1].startY) ** 2);
   console.log(s);
   mMap.scale *= s
 
-  touches[0].startX = e.touches[0].screenX;
-  touches[0].startY = e.touches[0].screenY;
+  touches[0].startX = e.touches[0].clientX;
+  touches[0].startY = e.touches[0].clientY;
   touches[0].start = e.timeStamp;
 
-  touches[1].startX = e.touches[1].screenX;
-  touches[1].startY = e.touches[1].screenY;
+  touches[1].startX = e.touches[1].clientX;
+  touches[1].startY = e.touches[1].clientY;
   touches[1].start = e.timeStamp;
 };
 
