@@ -33,7 +33,7 @@ canvas.addEventListener("touchstart", function (e) {
   touches[0].endY = e.touches[0].clientY;
   
   scroolInertia.isTouchEnd = false;
-  if(e.touches>1){
+  if(e.touches.length>1){
     touches[1].startX = e.touches[1].clientX;
     touches[1].startY = e.touches[1].clientY;
     
