@@ -23,7 +23,7 @@ document.addEventListener("keydown", (e) => checkKey(e.code, true));
 document.addEventListener("keyup", (e) => checkKey(e.code, false));
 
 canvas.addEventListener("touchstart", function (e) {
-  console.log(e);
+  e.preventDefault();
   touches[0].startX = e.touches[0].clientX;
   touches[0].startY = e.touches[0].clientY;
 
@@ -52,6 +52,7 @@ canvas.addEventListener("touchmove", function (e) {
 });
 
 canvas.addEventListener("touchend", function (e) {
+  if(e.touches.length == 0)
   scroolInertia.isTouchEnd = true;
 });
 
