@@ -140,7 +140,7 @@ function update() {
 
 function render() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(mMap.sprite, mMap.x, mMap.y, mMap.sprite.width * mMap.scale, mMap.sprite.height * mMap.scale);
+  context.drawImage(mMap.sprite, mMap.x * mMap.scale, mMap.y * mMap.scale, mMap.sprite.width * mMap.scale, mMap.sprite.height * mMap.scale);
 }
 
 function checkKey(code, flag) {
