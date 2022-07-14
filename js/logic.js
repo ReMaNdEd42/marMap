@@ -58,7 +58,8 @@ canvas.addEventListener("touchend", function (e) {
 
 const mMap = { sprite: new Image(), x: 0, y: 0, scale: 1 }
 
-mMap.sprite.src = "images/map.jpg"
+// mMap.sprite.src = "images/map.jpg"
+mMap.sprite.src = "images/map_final.svg"
 
 mMap.sprite.onload = function () {
   animation();
