@@ -56,7 +56,7 @@ canvas.addEventListener("touchend", function (e) {
   scroolInertia.isTouchEnd = true;
 });
 
-const mMap = { sprite: new Image(), x: 0, y: 0, scale: 1 }
+const mMap = { sprite: new Image(), x: 0, y: 0, scale: 0.64 }
 
 // mMap.sprite.src = "images/map.jpg"
 mMap.sprite.src = "images/map_final.svg"
@@ -113,10 +113,10 @@ function animation() {
 
 function update() {
 
-  if (keyMap.KeyA == true) mMap.x -= 5;
-  if (keyMap.KeyD == true) mMap.x += 5;
-  if (keyMap.KeyW == true) mMap.y -= 5;
-  if (keyMap.KeyS == true) mMap.y += 5;
+  if (keyMap.KeyA == true) mMap.x += 5;
+  if (keyMap.KeyD == true) mMap.x -= 5;
+  if (keyMap.KeyW == true) mMap.y += 5;
+  if (keyMap.KeyS == true) mMap.y -= 5;
 
   if (Math.abs(scroolInertia.speedX) > scroolInertia.deceleration && scroolInertia.isTouchEnd) {
     mMap.x += scroolInertia.speedX;
@@ -140,7 +140,7 @@ function update() {
 
 function render() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(mMap.sprite, mMap.x * mMap.scale, mMap.y * mMap.scale, mMap.sprite.width * mMap.scale, mMap.sprite.height * mMap.scale);
+  context.drawImage(mMap.sprite, mMap.x, mMap.y, mMap.sprite.width * mMap.scale, mMap.sprite.height * mMap.scale);
 }
 
 function checkKey(code, flag) {
