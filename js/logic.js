@@ -51,16 +51,12 @@ canvas.addEventListener("touchstart", function (e) {
 });
 
 canvas.addEventListener("touchmove", function (e) {
-  e.preventDefault();
   if (e.touches.length == 1) scrool(e);
   if (e.touches.length == 2) scale(e);
 
 });
 
 canvas.addEventListener("touchend", function (e) {
-  if (e.touches.length == 0)
-    scroolInertia.isTouchEnd = true;
-  e.preventDefault();
   if(e.touches.length == 0)
   scroolInertia.isTouchEnd = true;
 });
