@@ -194,6 +194,6 @@ var requestAnimatonFrame = (function () {
     window.oRequestAnimatonFrame ||
     window.msRequestAnimatonFrame ||
     function (callback) {
-      window.setTimeout(callback, 40);
+      window.setTimeout(callback, 16);
     };
 })();
