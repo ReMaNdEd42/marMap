@@ -8,7 +8,7 @@ const keyMap = {
 const trails = { sprites: new Array(195), count: 0, x: 0, y: 0 };
 for (let i = 0; i < trails.sprites.length; i++) {
   trails.sprites[i] = (new Image());
-  trails.sprites[i].src = `images/Композиция 3/Композиция 3_00${"0".repeat(3 - i.toString().length)}${i}.png`;
+  trails.sprites[i].src = `images/trails/trail(${i}).png`;
 }
 
 const scroolInertia = {
