@@ -152,9 +152,9 @@ function update() {
 
 
 function render() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
   context.save();
 
-  context.clearRect(0, 0, canvas.width, canvas.height);
   context.drawImage(mMap.sprite, mMap.x, mMap.y, mMap.sprite.width * mMap.scale, mMap.sprite.height * mMap.scale);
 
   context.translate(trails.sprites[trails.count].width / 2 + trails.x, trails.sprites[trails.count].height / 2 + trails.y);
@@ -194,6 +194,6 @@ var requestAnimatonFrame = (function () {
     window.oRequestAnimatonFrame ||
     window.msRequestAnimatonFrame ||
     function (callback) {
-      window.setTimeout(callback, 16);
+      window.setTimeout(callback, 15);
     };
 })();
