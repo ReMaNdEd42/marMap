@@ -6,6 +6,7 @@ const keyMap = {
   "KeyD": false, "KeyS": false
 };
 const trails = { sprites: new Array(195), count: 0, x: 0, y: 0 };
+
 for (let i = 0; i < trails.sprites.length; i++) {
   trails.sprites[i] = (new Image());
   trails.sprites[i].src = `images/trails/trail(${i}).png`;
@@ -61,7 +62,7 @@ canvas.addEventListener("touchend", function (e) {
   scroolInertia.isTouchEnd = true;
 });
 
-const mMap = { sprite: new Image(), x: 0, y: 0, scale: 0.64 }
+const mMap = { sprite: new Image(), x: 0, y: 0, scale: 0.64}
 
 // mMap.sprite.src = "images/map.jpg"
 mMap.sprite.src = "images/map_final.svg"
@@ -79,8 +80,8 @@ function scrool(e) {
   scroolInertia.speedX = (touches[0].endX - touches[0].startX) / (touches[0].stop - touches[0].start) * 100;
   scroolInertia.speedY = (touches[0].endY - touches[0].startY) / (touches[0].stop - touches[0].start) * 100;
 
-  mMap.x += (touches[0].endX - touches[0].startX);
-  mMap.y += (touches[0].endY - touches[0].startY);
+  mMap.x -= (touches[0].endX - touches[0].startX);
+  mMap.y -= (touches[0].endY - touches[0].startY);
 
   touches[0].startX = e.touches[0].clientX;
   touches[0].startY = e.touches[0].clientY;
@@ -122,13 +123,15 @@ function animation() {
 
 function update() {
   trails.count = (trails.count + 1) % (trails.sprites.length);
-  if (keyMap.KeyA == true) mMap.x += 5;
-  if (keyMap.KeyD == true) mMap.x -= 5;
-  if (keyMap.KeyW == true) mMap.y += 5;
-  if (keyMap.KeyS == true) mMap.y -= 5;
+
+
+  if (keyMap.KeyA == true) mMap.x -= 5;
+  if (keyMap.KeyD == true) mMap.x += 5;
+  if (keyMap.KeyW == true) mMap.y -= 5;
+  if (keyMap.KeyS == true) mMap.y += 5;
 
   if (Math.abs(scroolInertia.speedX) > scroolInertia.deceleration && scroolInertia.isTouchEnd) {
-    mMap.x += scroolInertia.speedX;
+    mMap.x -= scroolInertia.speedX;
     scroolInertia.speedX > 0 ?
       scroolInertia.speedX -= scroolInertia.deceleration :
       scroolInertia.speedX += scroolInertia.deceleration;
@@ -136,7 +139,7 @@ function update() {
   else scroolInertia.speedX = 0;
 
   if (Math.abs(scroolInertia.speedY) > scroolInertia.deceleration && scroolInertia.isTouchEnd) {
-    mMap.y += scroolInertia.speedY;
+    mMap.y -= scroolInertia.speedY;
     scroolInertia.speedY > 0 ?
       scroolInertia.speedY -= scroolInertia.deceleration :
       scroolInertia.speedY += scroolInertia.deceleration;
@@ -148,15 +151,15 @@ function update() {
 
 
 function render() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
   context.save();
-
-  context.drawImage(mMap.sprite, mMap.x, mMap.y, mMap.sprite.width * mMap.scale, mMap.sprite.height * mMap.scale);
-
+  
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(mMap.sprite, mMap.x, mMap.y, (canvas.width)/mMap.scale, (canvas.height)/mMap.scale, 0, 0, canvas.width, canvas.height);
+  
   context.translate(trails.sprites[trails.count].width / 2 + trails.x, trails.sprites[trails.count].height / 2 + trails.y);
   context.rotate(-1.57);
   context.drawImage(trails.sprites[trails.count], trails.x, trails.y, trails.sprites[trails.count].width * mMap.scale, trails.sprites[trails.count].height * mMap.scale);
-
+  
   context.restore();
 }
 
