@@ -154,7 +154,7 @@ function render() {
   context.save();
   
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(mMap.sprite, mMap.x, mMap.y, (canvas.width)/mMap.scale, (canvas.height)/mMap.scale, 0, 0, canvas.width, canvas.height);
+  context.drawImage(mMap.sprite, mMap.x/mMap.scale, mMap.y/mMap.scale, (canvas.width)/mMap.scale, (canvas.height)/mMap.scale, 0, 0, canvas.width, canvas.height);
   
   context.translate(trails.sprites[trails.count].width / 2 + trails.x, trails.sprites[trails.count].height / 2 + trails.y);
   // context.rotate(-1.57);
